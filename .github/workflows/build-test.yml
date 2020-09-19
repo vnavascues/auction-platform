@@ -1,0 +1,52 @@
+# Discarded  parallel jobs because of performance
+name: Build and Test
+
+on: [push, pull_request]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    name: Setup env, build, lint & test
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Get Node.js version from `.nvmrc` file
+        id: nvmrc
+        uses: browniebroke/read-nvmrc-action@v1
+
+      - name: Install Node.js ${{steps.get_nodejs_version.outputs}}
+        uses: actions/setup-node@v1
+        with:
+          node-version: "${{ steps.nvmrc.outputs.node_version }}"
+
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            npm-
+
+      - name: Install NPM dependencies
+        run: npm install
+
+      - name: Compile contracts
+        run: npm run compile
+
+      - name: Generate contracts TypeScript types
+        run: npm run typechain
+
+      - name: Run solhint
+        run: npm run lint:sol
+
+      - name: Run ESLint
+        run: npm run lint:ts
+
+      - name: Run unit tests
+        run: npm run test:unit
+
+      - name: Generate coverage report
+        continue-on-error: true
+        run: npm run coverage
