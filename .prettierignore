@@ -1,0 +1,9 @@
+# Folders
+build
+cache
+coverage
+dist
+node_modules
+
+# Files
+coverage.json

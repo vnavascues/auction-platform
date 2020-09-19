@@ -1,0 +1,35 @@
+# App
+dist/
+
+# Binaries (e.g. solc, solcjs)
+*.bin
+
+# Buidler
+build/
+cache
+
+# Environment variables
+*.env
+
+# IDEs
+.vscode
+
+# Logs
+logs
+*.log
+
+# Manticore
+mcore_*/
+
+# Mythx
+bin/
+
+# NPM
+node_modules/
+
+# OpenZeppelin
+.openzeppelin/
+
+# Solidity coverage
+coverage/
+coverage.json

@@ -1,0 +1,10 @@
+# Folders
+build
+cache
+coverage
+dist
+node_modules
+
+# Files
+.solcover.js
+coverage.json
