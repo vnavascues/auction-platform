@@ -1,5 +1,7 @@
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 [![Actions Status](https://github.com/vnavascues/auction-platform/workflows/Build%20and%20Test/badge.svg)](https://github.com/vnavascues/auction-platform/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/91ffd4836661971bb1d2/maintainability)](https://codeclimate.com/github/vnavascues/auction-platform/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/91ffd4836661971bb1d2/test_coverage)](https://codeclimate.com/github/vnavascues/auction-platform/test_coverage)
 
 # Auction Platform - Backend
 

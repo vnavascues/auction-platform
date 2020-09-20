@@ -47,6 +47,12 @@ jobs:
       - name: Run unit tests
         run: npm run test:unit
 
-      - name: Generate coverage report
+      - name: Generate & upload coverage report to Codeclimate
         continue-on-error: true
-        run: npm run coverage
+        uses: paambaati/codeclimate-action@v2.6.0
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CODECLIMATE_TEST_REPORTER_ID}}
+        with:
+          coverageCommand: npm run coverage
+          coverageLocations: |
+            ${{github.workspace}}/coverage/lcov.info:lcov
