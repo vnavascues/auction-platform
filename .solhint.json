@@ -2,6 +2,10 @@
   "extends": "solhint:recommended",
   "plugins": ["prettier"],
   "rules": {
+    "func-param-name-mixedcase": "warn",
+    "modifier-name-mixedcase": "warn",
+    "ordering": "warn",
+    "private-vars-leading-underscore": "warn",
     "avoid-suicide": "error",
     "avoid-sha3": "warn",
     "compiler-version": ["error", "^0.6.12"]

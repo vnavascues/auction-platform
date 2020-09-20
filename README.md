@@ -1,7 +1,7 @@
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 [![Known Vulnerabilities](https://snyk.io/test/github/vnavascues/auction-platform/badge.svg)](https://snyk.io/test/github/vnavascues/auction-platform)
 [![Actions Status](https://github.com/vnavascues/auction-platform/workflows/Build%20and%20Test/badge.svg)](https://github.com/vnavascues/auction-platform/actions)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/91ffd4836661971bb1d2/test_coverage)](https://codeclimate.com/github/vnavascues/auction-platform/test_coverage)
+[![codecov](https://codecov.io/gh/vnavascues/auction-platform/branch/master/graph/badge.svg)](https://codecov.io/gh/vnavascues/auction-platform)
 [![Maintainability](https://api.codeclimate.com/v1/badges/91ffd4836661971bb1d2/maintainability)](https://codeclimate.com/github/vnavascues/auction-platform/maintainability)
 
 # Auction Platform - Backend

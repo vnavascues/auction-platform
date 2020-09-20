@@ -347,7 +347,6 @@ contract AuctionRepository is TrustedInitializable, TrustedIERC721Receiver {
             "Auction deadline is past"
         );
         auction.ended = true;
-        uint256 bidsLength = auctionBids[_auctionId].length;
 
         if (auction.active == true) {
             auction.active = false;
@@ -387,7 +386,7 @@ contract AuctionRepository is TrustedInitializable, TrustedIERC721Receiver {
         address _operator,
         address _from,
         uint256 _deedId,
-        bytes calldata _data
+        bytes calldata _data // solhint-disable no-unused-vars
     ) external override returns (bytes4) {
         emit LogReceivedDeed(_operator, _from, _deedId);
         return _ERC721_RECEIVED;

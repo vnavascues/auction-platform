@@ -1,12 +1,16 @@
 # Discarded  parallel jobs because of performance
 name: Build and Test
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   build-test:
     runs-on: ubuntu-latest
-    name: Setup env, build, lint & test
+    name: Setup, build, lint, test & coverage
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -47,6 +51,8 @@ jobs:
       - name: Run unit tests
         run: npm run test:unit
 
+      # NB: this actions yes or yes will generate a report.
+      # Place it before Codecov action (it will just upload the report)
       - name: Generate & upload coverage report to Codeclimate
         continue-on-error: true
         uses: paambaati/codeclimate-action@v2.6.0
@@ -54,8 +60,15 @@ jobs:
           CC_TEST_REPORTER_ID: ${{secrets.CODECLIMATE_TEST_REPORTER_ID}}
         with:
           coverageCommand: npm run coverage
-          coverageLocations: |
-            ${{github.workspace}}/coverage/lcov.info:lcov
+          coverageLocations: ./coverage/lcov.info:lcov
+
+      - name: Upload coverage report to Codecov
+        continue-on-error: true
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.json
+          flags: unittests
 
       - name: Run Snyk to check for vulnerabilities
         continue-on-error: true
