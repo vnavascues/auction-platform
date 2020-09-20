@@ -1,7 +1,8 @@
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+[![Known Vulnerabilities](https://snyk.io/test/github/vnavascues/auction-platform/badge.svg)](https://snyk.io/test/github/vnavascues/auction-platform)
 [![Actions Status](https://github.com/vnavascues/auction-platform/workflows/Build%20and%20Test/badge.svg)](https://github.com/vnavascues/auction-platform/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/91ffd4836661971bb1d2/maintainability)](https://codeclimate.com/github/vnavascues/auction-platform/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/91ffd4836661971bb1d2/test_coverage)](https://codeclimate.com/github/vnavascues/auction-platform/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/91ffd4836661971bb1d2/maintainability)](https://codeclimate.com/github/vnavascues/auction-platform/maintainability)
 
 # Auction Platform - Backend
 
@@ -29,7 +30,7 @@ A set of builds grouped as follows:
 
 - [AuctionRepository.sol](contracts/AuctionRepository.sol): the contract that manages the "deeds" auctions, e.g. create/cancel/end an auction, bid an auction. It is an
 
-- [DeedRepository.sol](contracts/AuctionRepository.sol): the contract that manages the creation of a "deed" (an ERC721 non-fungible token).
+- [DeedRepository.sol](contracts/DeedRepository.sol): the contract that manages the creation of a "deed" (an ERC721 non-fungible token).
 
 ### Coverage
 
