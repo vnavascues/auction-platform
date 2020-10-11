@@ -2,7 +2,6 @@
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
-import "@nomiclabs/buidler/console.sol";
 import {
     ERC721UpgradeSafe as TrustedERC721UpgradeSafe
 } from "@openzeppelin/contracts-ethereum-package/contracts/token/ERC721/ERC721.sol";

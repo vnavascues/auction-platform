@@ -2,9 +2,6 @@
 pragma solidity 0.6.12;
 pragma experimental ABIEncoderV2;
 
-import "@nomiclabs/buidler/console.sol";
-// import "@openzeppelin/contracts-ethereum-package/contracts/utils/Initializable.sol";
-// import "./DeedRepository.sol";
 import {
     Initializable as TrustedInitializable
 } from "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol";
@@ -224,6 +221,7 @@ contract AuctionRepository is TrustedInitializable, TrustedIERC721Receiver {
             require(msg.value > auction.startPrice, "Bid below starting price");
         } else {
             currentBid = auctionBids[_auctionId][bidsLength - 1];
+            require(msg.sender != currentBid.from, "Consecutive bids");
             require(msg.value > currentBid.price, "Bid below current bid");
         }
 

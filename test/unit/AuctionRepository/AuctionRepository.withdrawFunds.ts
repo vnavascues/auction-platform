@@ -24,7 +24,9 @@ export function withdrawFunds(): void {
   let owner: Signer;
   let ownerAddr: string;
   let bidder: Signer;
+  let currBidder: Signer;
   let bidderAddr: string;
+  let currBidderAddr: string;
   let bidPrice: BigNumber;
 
   before(async function () {
@@ -32,8 +34,10 @@ export function withdrawFunds(): void {
 
     owner = this.signers[1];
     bidder = this.signers[2];
+    currBidder = this.signers[3];
     ownerAddr = await owner.getAddress();
     bidderAddr = await bidder.getAddress();
+    currBidderAddr = await currBidder.getAddress();
 
     // Deploy a mock of DeedRepository
     mockDeedRepository = await deployMockContract(
@@ -79,7 +83,7 @@ export function withdrawFunds(): void {
       .connect(bidder)
       .bidAuction(auction.id, { value: bidPrice });
     await this.auctionRepository
-      .connect(bidder)
+      .connect(currBidder)
       .bidAuction(auction.id, { value: currBidPrice });
   });
 
@@ -96,7 +100,7 @@ export function withdrawFunds(): void {
   });
 
   it("reverts if sender has no funds to withdraw", async function () {
-    const bidderWoFunds = this.signers[3];
+    const bidderWoFunds = this.signers[4];
 
     await expect(
       this.auctionRepository.connect(bidderWoFunds).withdrawFunds(),

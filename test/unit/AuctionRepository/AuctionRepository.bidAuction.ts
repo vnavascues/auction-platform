@@ -222,6 +222,14 @@ export function bidAuction(): void {
       expect(currBid.from).to.equal(currBidderAddr);
     });
 
+    it("reverts if sender is the auction current bidder", async function () {
+      await expect(
+        this.auctionRepository
+          .connect(currBidder)
+          .bidAuction(auction.id, { value: currBidPrice }),
+      ).to.be.revertedWith("Consecutive bids");
+    });
+
     it("reverts if msg value is lte the auction current bid", async function () {
       await expect(
         this.auctionRepository
