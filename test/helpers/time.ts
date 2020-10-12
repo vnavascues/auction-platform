@@ -10,6 +10,10 @@ import { BigNumberish, BigNumber } from "ethers";
 const { provider } = waffle;
 import colors = require("ansi-colors");
 
+// List of networks that behave different than ganache-cli, requiring an extra block
+// NB: "localhost" is used by ETH Gas Reporter
+const DELTA_BLOCK_NETWORKS = ["buidlerevm", "localhost"];
+
 async function advanceBlock(target?: number) {
   const timestamp = target ? [target] : [];
   return provider.send("evm_mine", timestamp);
@@ -85,7 +89,7 @@ export async function increaseTo(target: BigNumberish): Promise<void> {
 
 export const duration = {
   networkDeltaBlock: function (): BigNumber {
-    const deltaBlock = network.name === "buidlerevm" ? "1" : "0";
+    const deltaBlock = DELTA_BLOCK_NETWORKS.includes(network.name) ? "1" : "0";
     return BigNumber.from(deltaBlock);
   },
   seconds: function (val: BigNumberish): BigNumber {

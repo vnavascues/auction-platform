@@ -15,8 +15,11 @@ usePlugin("solidity-coverage");
 
 const config: BuidlerConfig = {
   gasReporter: {
-    currency: "USD",
+    coinmarketcap: process.env.CM_API_KEY,
+    currency: "GBP",
     enabled: process.env.REPORT_GAS ? !!Number(process.env.REPORT_GAS) : false,
+    excludeContracts: ["ReentrancyBidder"],
+    src: "./contracts",
   },
   networks: {
     coverage: {

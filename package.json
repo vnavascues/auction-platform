@@ -29,6 +29,7 @@
     "prettier:ts": "prettier --list-different **/*.ts",
     "test": "buidler test",
     "test:unit": "buidler test test/unit/**/*.ts",
+    "test:unit:gas": "npx buidler node > /dev/null & buidler test test/unit/**/*.ts --network localhost",
     "typechain": "buidler typechain"
   },
   "husky": {
